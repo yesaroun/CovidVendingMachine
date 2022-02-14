@@ -9,6 +9,7 @@ class User // 모든 클래스가 상속 받을 부모 클래스
     String cartCheck;
     Revenue re = new Revenue();
     Changes ch = new Changes();
+    Inventory iv = new Inventory();
 
     // 각종 변수 선언 및 정의
     int money = 0; // 사용자가 넣은 총 금액 (리셋되면 안되므로)
@@ -61,8 +62,18 @@ class User // 모든 클래스가 상속 받을 부모 클래스
             changes = money - price;
             re.addMoney(price); // 수익에 판 금액 추가하기
             System.out.println(ch.useChanges(changes));
-            // 잔돈 재고 확인 테스트
-            System.out.println("5000원 : "+ch.getChanges(5000) + ", 1000원 : " +ch.getChanges(1000) + ", 500원 : "+ch.getChanges(500) + ", 1000원 : "+ch.getChanges(100));
+
+            // 구매한 물건 재고에 반영하기
+            String cartItems = ca.getCartName();
+            String[] str = cartItems.split(",");
+
+            for (String a : str)
+            {
+                iv.sellItems(a, ca.getItemNum(a));
+            }
+            // 재고 확인 테스트
+            //System.out.println(iv.getInvens());
+
         }
         goMenu();
 

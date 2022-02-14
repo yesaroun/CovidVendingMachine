@@ -26,12 +26,4 @@ public class Text implements Print
         System.out.println(phrase.get(num));
     }
 
-    // 테스트
-    /*
-    public static void main(String[] args)
-    {
-        Text t = new Text();
-        t.print();
-    }
-     */
 }

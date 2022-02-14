@@ -1,5 +1,6 @@
 package VendingMachine;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -17,6 +18,12 @@ class Cart
     public void addPrice(int num)
     {
         price.add(num);
+    }
+
+    // 장바구니에 담긴 특정 물품의 개수 반환 메소드
+    public int getItemNum(String name)
+    {
+        return nameCount.get(name);
     }
 
     // 장바구니에 담긴 물품의 총 금액 반환 메소드
@@ -42,6 +49,19 @@ class Cart
         return items;
     }
 
+    // 장바구니에 담긴 물건의 이름 반환 메소드
+    public String getCartName()
+    {
+        String cartName = "";
+
+        for (Map.Entry<String, Integer> entry : nameCount.entrySet())
+        {
+            cartName += entry.getKey() + ",";
+        }
+        return cartName;
+    }
+
+
     // 장바구니에 물건 추가 (나중에 User에 옮길 것?)
     public void addItems(String name, int n)
     {
@@ -55,4 +75,3 @@ class Cart
         }
     }
 }
-

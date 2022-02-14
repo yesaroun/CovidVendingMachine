@@ -8,5 +8,8 @@ public class Test
         vu.printMenu();
         vu.menuSelect();
         vu.menuRun();
+
+        TextAdminRun tar = new TextAdminRun();
+
     }
 }
