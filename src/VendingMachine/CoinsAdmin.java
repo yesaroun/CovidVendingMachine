@@ -109,9 +109,9 @@ class CoinsAdmin implements Admin {
         try {
             Changes cha = new Changes();
             System.out.println("제거할 잔돈 단위와 수량을 입력하세요");
-            int name = sc.nextInt();
+            //int name = sc.nextInt();
             int i = sc.nextInt();
-            cha.useChanges(name, i); //??
+            cha.useChanges(i); //??
         } catch (InputMismatchException i) {
             System.out.println("입력 형식이 틀립니다.");
             sc.nextLine();

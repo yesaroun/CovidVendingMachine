@@ -150,12 +150,7 @@ public class TextAdmin
     {
         System.out.println("\n -= 문구 관리 창을 종료하고 관리자 메뉴로 돌아갑니다 =- ");
         AdminUI au = new AdminUI();
-        try {
-            au.onSystem();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        au.onSystem();
     }
 
   public HashMap<Integer, String> getHm()

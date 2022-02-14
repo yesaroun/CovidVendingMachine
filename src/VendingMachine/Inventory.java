@@ -42,4 +42,16 @@ class Inventory
     {
         invenNumber.put(name, invenNumber.get(name)-sell);
     }
+
+    // 전체 재고 수 반환 메소드
+    public String getInvens()
+    {
+        String invens = "";
+
+        for (Map.Entry<String, Integer> entry : invenNumber.entrySet())
+        {
+            invens += entry.getKey() + " - " + entry.getValue() + "개 ";
+        }
+        return invens;
+    }
 }

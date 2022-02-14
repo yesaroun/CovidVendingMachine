@@ -11,6 +11,7 @@ class VendingUI extends User
     private static Cart ca = new Cart();
     private static User us = new User();
     private static KitTest kt = new KitTest();
+    private static AdminUI ai = new AdminUI();
 
     //메뉴 출력 메소드
     public static void printMenu()
@@ -48,7 +49,7 @@ class VendingUI extends User
             case 3: kt.KitRun(); break;
             case 4: System.out.println("\n현재 장바구니에 든 물품은 \"" + ca.getCartItems() + "\" 입니다.\n"); goMenu(); break;
             case 5: us.buy(); break;
-            //case 6: chaElement(); break;
+            case 6: ai.onSystem(); break;
         }
     }
 }

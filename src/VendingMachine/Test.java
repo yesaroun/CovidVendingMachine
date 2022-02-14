@@ -9,7 +9,5 @@ public class Test
         vu.menuSelect();
         vu.menuRun();
 
-        TextAdminRun tar = new TextAdminRun();
-
     }
 }
