@@ -4,16 +4,12 @@ import java.io.IOException;
 
 public class KitTest {
 
-    public void KitRun()
+    public void KitRun() throws IOException
     {
         CheckKit ck = new CheckKit();
 
-        try {
-            ck.dateOfBirth();
-            ck.checkSymptoms();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ck.dateOfBirth();
+        ck.checkSymptoms();
         ck.ageCalc();
     }
 }

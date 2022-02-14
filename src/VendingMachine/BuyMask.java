@@ -1,6 +1,7 @@
 package VendingMachine;
 
 
+import java.io.IOException;
 import java.util.Scanner;
 
 class BuyMask extends User
@@ -8,7 +9,7 @@ class BuyMask extends User
     Scanner sc = new Scanner(System.in);
 
     // BuyMaskRun 메소드
-    public void buyMaskRun()
+    public void buyMaskRun() throws IOException
     {
         buyMask();
         goMenu();
@@ -63,7 +64,7 @@ class BuyMask extends User
     }
 
     // 마스크 구매 기능 메소드
-    public void buyMask()
+    public void buyMask() throws IOException
     {
         Cart ca = new Cart();
 

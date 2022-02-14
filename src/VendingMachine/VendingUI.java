@@ -1,5 +1,6 @@
 package VendingMachine;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -40,7 +41,7 @@ class VendingUI extends User
     }
 
     // 메뉴로 이동하는 메소드
-    public static void menuRun()
+    public static void menuRun() throws IOException
     {
         switch (sel)
         {

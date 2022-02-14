@@ -1,13 +1,14 @@
 package VendingMachine;
 
 
+import java.io.IOException;
 import java.util.Scanner;
 
 class BuyHand extends User
 {
     Scanner sc = new Scanner(System.in);
 
-    public void buyHandRun()
+    public void buyHandRun() throws IOException
     {
         buyHand();
         goMenu();
@@ -43,7 +44,7 @@ class BuyHand extends User
         return num;
     }
 
-    public void buyHand()
+    public void buyHand() throws IOException
     {
         int hand = printHand();
         if(hand == 1) // 포켓형 손소독제

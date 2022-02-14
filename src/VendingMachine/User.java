@@ -1,8 +1,9 @@
 package VendingMachine;
 
+import java.io.IOException;
 import java.util.Scanner;
 
-class User // 모든 클래스가 상속 받을 부모 클래스
+class User  // 모든 클래스가 상속 받을 부모 클래스
 {
     // 각종 클래스 인스턴스 생성
     Cart ca = new Cart();
@@ -14,7 +15,7 @@ class User // 모든 클래스가 상속 받을 부모 클래스
     // 각종 변수 선언 및 정의
     int money = 0; // 사용자가 넣은 총 금액 (리셋되면 안되므로)
 
-    public void buy() //구매하기 메소드
+    public void buy() throws IOException //구매하기 메소드
     {
         Scanner sc = new Scanner(System.in);
         int price = ca.getPrice(); // 장바구니에 담은 물건의 총 금액
@@ -85,14 +86,14 @@ class User // 모든 클래스가 상속 받을 부모 클래스
         System.out.println(cartCheck);
     }
 
-    public static void goMenu() // 초기 메뉴 메소드
+    public static void goMenu() throws IOException // 초기 메뉴 메소드
     {
         VendingUI.printMenu();
         VendingUI.menuSelect();
         VendingUI.menuRun();
     }
 
-    public void addCart(String name ,int price) // 장바구니 추가 메소드
+    public void addCart(String name ,int price) throws IOException  // 장바구니 추가 메소드
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("\n수량 입력 : ");
@@ -100,5 +101,6 @@ class User // 모든 클래스가 상속 받을 부모 클래스
         ca.addItems(name, n);
         ca.addPrice(price * n);
         System.out.println("\n" + ca.getCartItems());
+        goMenu();
     }
 }

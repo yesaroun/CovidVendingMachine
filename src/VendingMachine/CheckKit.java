@@ -15,6 +15,13 @@ public class CheckKit extends User
     private int birthYear;                  // 태어난 해
     private int birthMonth;                 // 태어난 달
     private int birthDay;                   // 태어난 일
+    Calendar now = Calendar.getInstance();
+
+    int y = now.get(Calendar.YEAR);
+    int m = now.get(Calendar.MONTH);
+    int d = now.get(Calendar.DATE);
+
+    boolean age60 = false;
 
     void dateOfBirth() throws IOException       // 생년월일 입력
     {
@@ -52,19 +59,18 @@ public class CheckKit extends User
 
     void ageCalc()                          // 만나이 계산
     {
-        Calendar now = Calendar.getInstance();
-
-        int y = now.get(Calendar.YEAR);
-        int m = now.get(Calendar.MONTH);
-        int d = now.get(Calendar.DATE);
-
         age = y - birthYear;
         if(age == 60)               // 확인해보기
         {
             if(birthMonth > m+1)
-                age--;
+                age = age - 1;
             else if(birthMonth == m+1 && birthDay > d)
-                age--;
+                age = age -1;
+        }
+
+        if (age >= 60)
+        {
+            age60 = true;
         }
     }
 
@@ -73,8 +79,11 @@ public class CheckKit extends User
         Scanner sc = new Scanner(System.in);
         boolean check = false;
 
+        ageCalc();
+
         do
         {
+
             System.out.println("\n\n최근 3일 이내 발생한 증상을 입력해주세요.(중복 입력시 공백으로 구분) : ");
             System.out.println("[1] 무증상");
             System.out.println("[2] 기침");
@@ -88,41 +97,27 @@ public class CheckKit extends User
             String st1 = sc.nextLine();
             String[] ans = st1.split("\\s");
 
-            for(String st : ans){
-                try {
-                    int a = Integer.parseInt(st);
+            for (String st : ans)
+            {
+                int a = Integer.parseInt(st);
 
-                    if (a == 1 && ans.length == 1)
+                if(a == 1 && ans.length == 1)
+                {
+                    textMessageCheck();
+                }
+                else if(a == 2 || a == 3 || a == 4 || a == 5 || a == 6 || a == 7)
+                {
+                    if (age60 == true)
+                    {
+                        informationPcr();
+                    }
+                    else if(age60 == false)
                     {
                         textMessageCheck();
-                        check = true;
-                        break;
                     }
-                    else if (a==1)
-                    {
-                        check = false;
-                        break;
-                    }
-                    else if(a == 2 || a == 3 || a == 4 || a == 5 || a == 6 || a == 7)
-                    {
-                        if (age >= 60)
-                        {
-                            informationPcr();
-                            check = true;
-                        }
-                        else
-                        {
-                            textMessageCheck();
-                            check = true;
-                        }
-                    } else
-                        check = false;
-                } catch (NumberFormatException e){
-                    check = false;
-                } catch (Exception e){
-                    check = false;
                 }
             }
+
         }while (check = true);
     }
 
@@ -149,7 +144,6 @@ public class CheckKit extends User
             case 2:
                 System.out.println("\n[2] 없다 를 선택하셨습니다. 다음 문항으로 넘어갑니다. ");
                 checkDocNote();
-                break;
         }
     }
 
@@ -251,10 +245,8 @@ public class CheckKit extends User
         return num;
     }
 
-    public void buyKit()
+    public void buyKit() throws IOException
     {
-        Cart ca = new Cart();
-
         System.out.println("자가진단 키트 : 10000원");
 
         int num = printCartBuy();

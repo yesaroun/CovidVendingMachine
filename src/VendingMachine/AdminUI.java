@@ -11,6 +11,11 @@ import java.io.InputStreamReader;
 // ① 로그인, UI, off 전원
 class AdminUI
 {
+    ItemAdmin IA = new ItemAdmin();
+    //BillElement BE = new ItemAdmin();
+    CoinsAdmin CA = new CoinsAdmin();
+    TextAdminRun TA = new TextAdminRun();
+
     VendingUI vu = new VendingUI();
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -73,10 +78,7 @@ class AdminUI
     // ⓓ 선택된 메뉴 실행에 따른 기능 호출 메소드 → 완성
     public void menuRun() throws IOException
     {
-        ItemAdmin IA = new ItemAdmin();
-        //BillElement BE = new ItemAdmin();
-        CoinsAdmin CA = new CoinsAdmin();
-        TextAdminRun TA = new TextAdminRun();
+
 
         switch (temp)
         {
